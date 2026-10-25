@@ -11,7 +11,8 @@ Frappe v16 app **`erpnext_amazon_business_buying`** for Amazon Business **Punch-
 
 - DocTypes: Buying Settings (+ punch-in storefront secrets), Buying Company Config (+ cost-center approvers and buyer map), Purchase Request (+ items), Punch-in Log
 - Workflow **Amazon Business Purchase Request Approval** (roles **Amazon Business Buyer** / **Amazon Business Approver**, created on install/migrate)
-- **Amazon Business Buyer**: own purchase requests only (list/query scoped; identity defaulted from session)
+- **Amazon Business Buyer**: own purchase requests only (`buyer_user` list filter; identity defaulted from session; no delete)
+- **Buyer User / Buyer Email** on saved requests: only **System Manager** may reassign (approvers and buyers cannot)
 - Desk workspace **Amazon Business Buying** (no separate apps-screen entry)
 - CI: Ruff + unit tests (bench migrate job skeleton)
 
