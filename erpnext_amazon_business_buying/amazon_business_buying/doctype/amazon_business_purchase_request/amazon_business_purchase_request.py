@@ -22,6 +22,13 @@ class AmazonBusinessPurchaseRequest(Document):
 				self.buyer_email = email
 
 	def validate(self) -> None:
+		if not self.is_new() and not _user_may_change_buyer_identity(frappe.session.user):
+			before = self.get_doc_before_save()
+			if before:
+				if self.buyer_user != before.buyer_user:
+					frappe.throw("Only System Manager may change Buyer User.")
+				if self.buyer_email != before.buyer_email:
+					frappe.throw("Only System Manager may change Buyer Email.")
 		if not _buyer_list_scope_applies(frappe.session.user):
 			return
 		user = frappe.session.user
@@ -34,6 +41,12 @@ class AmazonBusinessPurchaseRequest(Document):
 			self.buyer_email = user_email
 		elif self.buyer_email and user_email and self.buyer_email != user_email:
 			frappe.throw("Amazon Business Buyers cannot change Buyer Email.")
+
+
+def _user_may_change_buyer_identity(user: str) -> bool:
+	if user == "Administrator":
+		return True
+	return "System Manager" in frappe.get_roles(user)
 
 
 def _buyer_list_scope_applies(user: str) -> bool:
