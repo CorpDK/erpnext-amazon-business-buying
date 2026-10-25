@@ -7,14 +7,21 @@ app_license = "GPL-3.0-or-later"
 
 required_apps = ["erpnext_amazon_business"]
 
-add_to_apps_screen = [
-	{
-		"name": app_name,
-		"title": app_title,
-		"route": "/app/amazon-business-buying",
-		"has_permission": "erpnext_amazon_business_buying.permissions.has_app_permission",
-	},
-]
+permission_query_conditions = {
+	"Amazon Business Purchase Request": (
+		"erpnext_amazon_business_buying.amazon_business_buying.doctype."
+		"amazon_business_purchase_request.amazon_business_purchase_request."
+		"get_permission_query_conditions"
+	),
+}
+
+has_permission = {
+	"Amazon Business Purchase Request": (
+		"erpnext_amazon_business_buying.amazon_business_buying.doctype."
+		"amazon_business_purchase_request.amazon_business_purchase_request."
+		"has_permission"
+	),
+}
 
 before_install = "erpnext_amazon_business_buying.patches.check_version_compatibility.execute"
 before_migrate = "erpnext_amazon_business_buying.patches.check_version_compatibility.execute"
