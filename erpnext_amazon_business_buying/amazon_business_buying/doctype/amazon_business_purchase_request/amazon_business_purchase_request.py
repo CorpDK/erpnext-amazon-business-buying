@@ -55,16 +55,8 @@ def _buyer_owns_request(user: str, buyer_user: str | None, buyer_email: str | No
 def get_permission_query_conditions(user: str) -> str:
 	if not _buyer_list_scope_applies(user):
 		return ""
-	user_email = frappe.db.get_value("User", user, "email") or ""
 	escaped_user = frappe.db.escape(user)
-	escaped_email = frappe.db.escape(user_email)
-	return f"""(
-		`tabAmazon Business Purchase Request`.buyer_user = {escaped_user}
-		OR (
-			IFNULL(`tabAmazon Business Purchase Request`.buyer_user, '') = ''
-			AND `tabAmazon Business Purchase Request`.buyer_email = {escaped_email}
-		)
-	)"""
+	return f"`tabAmazon Business Purchase Request`.buyer_user = {escaped_user}"
 
 
 def has_permission(doc, ptype: str, user: str) -> bool:
