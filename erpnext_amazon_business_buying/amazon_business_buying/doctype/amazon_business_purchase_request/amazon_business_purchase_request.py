@@ -45,13 +45,6 @@ def _buyer_list_scope_applies(user: str) -> bool:
 	return not roles.intersection(_ELEVATED_ROLES)
 
 
-def _buyer_owns_request(user: str, buyer_user: str | None, buyer_email: str | None) -> bool:
-	if buyer_user:
-		return buyer_user == user
-	user_email = frappe.db.get_value("User", user, "email")
-	return bool(user_email and buyer_email and buyer_email == user_email)
-
-
 def get_permission_query_conditions(user: str) -> str:
 	if not _buyer_list_scope_applies(user):
 		return ""
@@ -62,4 +55,7 @@ def get_permission_query_conditions(user: str) -> str:
 def has_permission(doc, ptype: str, user: str) -> bool:
 	if not _buyer_list_scope_applies(user):
 		return True
-	return _buyer_owns_request(user, doc.get("buyer_user"), doc.get("buyer_email"))
+	if ptype == "create" or doc.get("__islocal"):
+		return True
+	buyer_user = doc.get("buyer_user")
+	return bool(buyer_user and buyer_user == user)
