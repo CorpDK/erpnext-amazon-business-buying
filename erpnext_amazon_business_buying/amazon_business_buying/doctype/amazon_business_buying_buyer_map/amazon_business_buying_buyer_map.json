@@ -1,0 +1,43 @@
+{
+ "actions": [],
+ "creation": "2026-10-25 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": ["buyer_email", "user", "default_cost_center"],
+ "fields": [
+  {
+   "fieldname": "buyer_email",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Buyer Email",
+   "options": "Email",
+   "reqd": 1
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "User",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "default_cost_center",
+   "fieldtype": "Link",
+   "label": "Default Cost Center",
+   "options": "Cost Center"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-10-25 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Amazon Business Buying",
+ "name": "Amazon Business Buying Buyer Map",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

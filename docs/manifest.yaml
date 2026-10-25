@@ -1,0 +1,33 @@
+version: 1
+app:
+  name: "ERPNext Amazon Business Buying"
+  repository: "CorpDK/erpnext-amazon-business-buying"
+  owner: "CorpDK"
+  ownerStatus: active
+  status: draft
+  lastVerified: "2026-10-25"
+  license: "GPL-3.0-or-later"
+  frappeAppName: erpnext_amazon_business_buying
+  publicationTargets:
+    - frappe_marketplace
+  sourcePaths:
+    - README.md
+    - erpnext_amazon_business_buying/
+    - docs/
+    - pyproject.toml
+
+defaultVisibility: public
+
+documentationStatus:
+  summary: >
+    Frappe v16 buying app: Punch-in purchase requests, approval workflow, and
+    punch-in audit log. Requires erpnext_amazon_business (core) for storefront
+    master and relay pairing.
+  designReferences:
+    - "CorpDK/ERP docs/amazon-business-buying-app-design.md"
+
+areas:
+  readme:
+    status: present
+    path: README.md
+    visibility: public

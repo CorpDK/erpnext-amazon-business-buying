@@ -1,0 +1,123 @@
+{
+ "actions": [],
+ "autoname": "field:company",
+ "creation": "2026-10-25 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "buying_enabled",
+  "default_approver",
+  "allow_self_approval",
+  "threshold_1",
+  "threshold_2",
+  "rogue_spend_alert",
+  "routing_section",
+  "cost_center_approvers",
+  "buyer_map"
+ ],
+ "fields": [
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "buying_enabled",
+   "fieldtype": "Check",
+   "label": "Buying Enabled"
+  },
+  {
+   "fieldname": "default_approver",
+   "fieldtype": "Link",
+   "label": "Default Approver",
+   "options": "User"
+  },
+  {
+   "default": "0",
+   "fieldname": "allow_self_approval",
+   "fieldtype": "Check",
+   "label": "Allow Self Approval"
+  },
+  {
+   "fieldname": "threshold_1",
+   "fieldtype": "Currency",
+   "label": "Threshold 1",
+   "options": "company:company:default_currency"
+  },
+  {
+   "fieldname": "threshold_2",
+   "fieldtype": "Currency",
+   "label": "Threshold 2",
+   "options": "company:company:default_currency"
+  },
+  {
+   "default": "1",
+   "fieldname": "rogue_spend_alert",
+   "fieldtype": "Check",
+   "label": "Rogue Spend Alert"
+  },
+  {
+   "fieldname": "routing_section",
+   "fieldtype": "Section Break",
+   "label": "Routing"
+  },
+  {
+   "fieldname": "cost_center_approvers",
+   "fieldtype": "Table",
+   "label": "Cost Center Approvers",
+   "options": "Amazon Business Buying Cost Center Approver"
+  },
+  {
+   "fieldname": "buyer_map",
+   "fieldtype": "Table",
+   "label": "Buyer Map",
+   "options": "Amazon Business Buying Buyer Map"
+  }
+ ],
+ "links": [],
+ "modified": "2026-10-25 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Amazon Business Buying",
+ "name": "Amazon Business Buying Company Config",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "import": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "company",
+ "track_changes": 1
+}

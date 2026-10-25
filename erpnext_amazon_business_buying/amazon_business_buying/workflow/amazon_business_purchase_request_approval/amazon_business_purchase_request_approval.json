@@ -1,0 +1,152 @@
+{
+ "creation": "2026-10-25 00:00:00.000000",
+ "docstatus": 0,
+ "doctype": "Workflow",
+ "document_type": "Amazon Business Purchase Request",
+ "is_active": 1,
+ "modified": "2026-10-25 00:00:00.000000",
+ "name": "Amazon Business Purchase Request Approval",
+ "override_status": 0,
+ "send_email_alert": 0,
+ "states": [
+  {
+   "allow_edit": "Amazon Business Buyer",
+   "doc_status": "0",
+   "is_optional_state": 0,
+   "state": "Draft",
+   "update_field": "status",
+   "update_value": "Draft",
+   "workflow_builder_id": "st-draft"
+  },
+  {
+   "allow_edit": "Amazon Business Approver",
+   "doc_status": "0",
+   "is_optional_state": 0,
+   "state": "Pending Approval",
+   "update_field": "status",
+   "update_value": "Pending Approval",
+   "workflow_builder_id": "st-pending"
+  },
+  {
+   "allow_edit": "Accounts Manager",
+   "doc_status": "0",
+   "is_optional_state": 0,
+   "state": "Approved",
+   "update_field": "status",
+   "update_value": "Approved",
+   "workflow_builder_id": "st-approved"
+  },
+  {
+   "allow_edit": "Accounts Manager",
+   "doc_status": "0",
+   "is_optional_state": 0,
+   "state": "Submitted to Amazon",
+   "update_field": "status",
+   "update_value": "Submitted to Amazon",
+   "workflow_builder_id": "st-submitted"
+  },
+  {
+   "allow_edit": "Amazon Business Approver",
+   "doc_status": "0",
+   "is_optional_state": 0,
+   "state": "Rejected",
+   "update_field": "status",
+   "update_value": "Rejected",
+   "workflow_builder_id": "st-rejected"
+  },
+  {
+   "allow_edit": "Accounts Manager",
+   "doc_status": "0",
+   "is_optional_state": 0,
+   "state": "Fulfilled",
+   "update_field": "status",
+   "update_value": "Fulfilled",
+   "workflow_builder_id": "st-fulfilled"
+  },
+  {
+   "allow_edit": "System Manager",
+   "doc_status": "0",
+   "is_optional_state": 0,
+   "state": "Expired",
+   "update_field": "status",
+   "update_value": "Expired",
+   "workflow_builder_id": "st-expired"
+  }
+ ],
+ "transitions": [
+  {
+   "action": "Submit for Approval",
+   "allow_self_approval": 0,
+   "allowed": "Amazon Business Buyer",
+   "next_state": "Pending Approval",
+   "state": "Draft",
+   "workflow_builder_id": "tr-submit"
+  },
+  {
+   "action": "Approve",
+   "allow_self_approval": 0,
+   "allowed": "Amazon Business Approver",
+   "next_state": "Approved",
+   "state": "Pending Approval",
+   "workflow_builder_id": "tr-approve"
+  },
+  {
+   "action": "Approve",
+   "allow_self_approval": 0,
+   "allowed": "Accounts Manager",
+   "next_state": "Approved",
+   "state": "Pending Approval",
+   "workflow_builder_id": "tr-approve-am"
+  },
+  {
+   "action": "Reject",
+   "allow_self_approval": 0,
+   "allowed": "Amazon Business Approver",
+   "next_state": "Rejected",
+   "state": "Pending Approval",
+   "workflow_builder_id": "tr-reject"
+  },
+  {
+   "action": "Reject",
+   "allow_self_approval": 0,
+   "allowed": "Accounts Manager",
+   "next_state": "Rejected",
+   "state": "Pending Approval",
+   "workflow_builder_id": "tr-reject-am"
+  },
+  {
+   "action": "Mark Submitted to Amazon",
+   "allow_self_approval": 0,
+   "allowed": "Accounts Manager",
+   "next_state": "Submitted to Amazon",
+   "state": "Approved",
+   "workflow_builder_id": "tr-submitted"
+  },
+  {
+   "action": "Mark Fulfilled",
+   "allow_self_approval": 0,
+   "allowed": "Accounts Manager",
+   "next_state": "Fulfilled",
+   "state": "Submitted to Amazon",
+   "workflow_builder_id": "tr-fulfilled"
+  },
+  {
+   "action": "Mark Expired",
+   "allow_self_approval": 0,
+   "allowed": "System Manager",
+   "next_state": "Expired",
+   "state": "Pending Approval",
+   "workflow_builder_id": "tr-expire-pending"
+  },
+  {
+   "action": "Mark Expired",
+   "allow_self_approval": 0,
+   "allowed": "System Manager",
+   "next_state": "Expired",
+   "state": "Draft",
+   "workflow_builder_id": "tr-expire-draft"
+  }
+ ],
+ "workflow_name": "Amazon Business Purchase Request Approval",
+ "workflow_state_field": "status"
+}

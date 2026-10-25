@@ -1,0 +1,1 @@
+erpnext_amazon_business_buying.patches.check_version_compatibility

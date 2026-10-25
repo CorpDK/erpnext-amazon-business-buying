@@ -1,0 +1,246 @@
+{
+ "actions": [],
+ "autoname": "format:ABPR-{company_abbr}-{#####}",
+ "creation": "2026-10-25 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "storefront",
+  "amazon_payload_id",
+  "status",
+  "buyer_section",
+  "buyer_email",
+  "buyer_user",
+  "commercial_section",
+  "currency",
+  "grand_total",
+  "tax_total",
+  "cart_snapshot_json",
+  "accounting_section",
+  "cost_center",
+  "project",
+  "purchase_order_number",
+  "approval_section",
+  "approved_by",
+  "approved_on",
+  "rejection_reason",
+  "linkage_section",
+  "amazon_order_id",
+  "amazon_business_purchase",
+  "items_section",
+  "items"
+ ],
+ "fields": [
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "storefront",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Storefront",
+   "options": "Amazon Business Storefront",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amazon_payload_id",
+   "fieldtype": "Data",
+   "label": "Amazon Payload ID",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Draft\nPending Approval\nApproved\nSubmitted to Amazon\nRejected\nFulfilled\nExpired",
+   "reqd": 1
+  },
+  {
+   "fieldname": "buyer_section",
+   "fieldtype": "Section Break",
+   "label": "Buyer"
+  },
+  {
+   "fieldname": "buyer_email",
+   "fieldtype": "Data",
+   "label": "Buyer Email",
+   "options": "Email"
+  },
+  {
+   "fieldname": "buyer_user",
+   "fieldtype": "Link",
+   "label": "Buyer User",
+   "options": "User"
+  },
+  {
+   "fieldname": "commercial_section",
+   "fieldtype": "Section Break",
+   "label": "Commercial"
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "grand_total",
+   "fieldtype": "Currency",
+   "label": "Grand Total",
+   "options": "currency"
+  },
+  {
+   "fieldname": "tax_total",
+   "fieldtype": "Currency",
+   "label": "Tax Total",
+   "options": "currency"
+  },
+  {
+   "fieldname": "cart_snapshot_json",
+   "fieldtype": "Code",
+   "label": "Cart Snapshot JSON",
+   "options": "JSON"
+  },
+  {
+   "fieldname": "accounting_section",
+   "fieldtype": "Section Break",
+   "label": "Accounting Hints"
+  },
+  {
+   "fieldname": "cost_center",
+   "fieldtype": "Link",
+   "label": "Cost Center",
+   "options": "Cost Center"
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Project"
+  },
+  {
+   "fieldname": "purchase_order_number",
+   "fieldtype": "Data",
+   "label": "Purchase Order Number"
+  },
+  {
+   "fieldname": "approval_section",
+   "fieldtype": "Section Break",
+   "label": "Approval"
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "Approved By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "approved_on",
+   "fieldtype": "Datetime",
+   "label": "Approved On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "rejection_reason",
+   "fieldtype": "Small Text",
+   "label": "Rejection Reason"
+  },
+  {
+   "fieldname": "linkage_section",
+   "fieldtype": "Section Break",
+   "label": "Linkage"
+  },
+  {
+   "fieldname": "amazon_order_id",
+   "fieldtype": "Data",
+   "label": "Amazon Order ID"
+  },
+  {
+   "fieldname": "amazon_business_purchase",
+   "fieldtype": "Data",
+   "label": "Amazon Business Purchase",
+   "read_only": 1
+  },
+  {
+   "fieldname": "items_section",
+   "fieldtype": "Section Break",
+   "label": "Items"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "Amazon Business Purchase Request Item"
+  }
+ ],
+ "links": [],
+ "modified": "2026-10-25 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Amazon Business Buying",
+ "name": "Amazon Business Purchase Request",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Amazon Business Buyer",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "report": 1,
+   "role": "Amazon Business Approver",
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "import": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
