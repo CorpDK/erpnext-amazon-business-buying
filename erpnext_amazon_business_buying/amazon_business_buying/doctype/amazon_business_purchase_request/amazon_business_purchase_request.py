@@ -11,7 +11,29 @@ _ELEVATED_ROLES = frozenset(
 
 
 class AmazonBusinessPurchaseRequest(Document):
-	pass
+	def before_insert(self) -> None:
+		if not _buyer_list_scope_applies(frappe.session.user):
+			return
+		if not self.buyer_user:
+			self.buyer_user = frappe.session.user
+		if not self.buyer_email:
+			email = frappe.db.get_value("User", frappe.session.user, "email")
+			if email:
+				self.buyer_email = email
+
+	def validate(self) -> None:
+		if not _buyer_list_scope_applies(frappe.session.user):
+			return
+		user = frappe.session.user
+		if not self.buyer_user:
+			self.buyer_user = user
+		elif self.buyer_user != user:
+			frappe.throw("Amazon Business Buyers cannot change Buyer User.")
+		user_email = frappe.db.get_value("User", user, "email")
+		if not self.buyer_email and user_email:
+			self.buyer_email = user_email
+		elif self.buyer_email and user_email and self.buyer_email != user_email:
+			frappe.throw("Amazon Business Buyers cannot change Buyer Email.")
 
 
 def _buyer_list_scope_applies(user: str) -> bool:
