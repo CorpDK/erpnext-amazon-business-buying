@@ -1,0 +1,80 @@
+{
+ "actions": [],
+ "creation": "2026-10-25 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "amazon_line_id",
+  "asin",
+  "description",
+  "qty",
+  "rate",
+  "currency",
+  "merchant_name",
+  "tax_amount"
+ ],
+ "fields": [
+  {
+   "fieldname": "amazon_line_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Amazon Line ID",
+   "reqd": 1
+  },
+  {
+   "fieldname": "asin",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "ASIN"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Description"
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Qty",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "rate",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Rate",
+   "options": "currency"
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "merchant_name",
+   "fieldtype": "Data",
+   "label": "Merchant Name"
+  },
+  {
+   "fieldname": "tax_amount",
+   "fieldtype": "Currency",
+   "label": "Tax Amount",
+   "options": "currency"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-10-25 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Amazon Business Buying",
+ "name": "Amazon Business Purchase Request Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

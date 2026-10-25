@@ -1,0 +1,83 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-10-25 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "punchin_section",
+  "punchin_path_prefix",
+  "company_resolution_mode",
+  "enable_buyer_portal",
+  "secrets_section",
+  "storefront_secrets"
+ ],
+ "fields": [
+  {
+   "fieldname": "punchin_section",
+   "fieldtype": "Section Break",
+   "label": "Punch-in"
+  },
+  {
+   "default": "/punchin",
+   "fieldname": "punchin_path_prefix",
+   "fieldtype": "Data",
+   "label": "Punch-in Path Prefix",
+   "reqd": 1
+  },
+  {
+   "default": "By buyer email map",
+   "fieldname": "company_resolution_mode",
+   "fieldtype": "Select",
+   "label": "Company Resolution Mode",
+   "options": "By buyer email map\nDefault company",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_buyer_portal",
+   "fieldtype": "Check",
+   "label": "Enable Buyer Portal"
+  },
+  {
+   "fieldname": "secrets_section",
+   "fieldtype": "Section Break",
+   "label": "Storefront Secrets"
+  },
+  {
+   "fieldname": "storefront_secrets",
+   "fieldtype": "Table",
+   "label": "Punch-in Storefront Secrets",
+   "options": "Amazon Business Punch-in Storefront Secret"
+  }
+ ],
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-10-25 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Amazon Business Buying",
+ "name": "Amazon Business Buying Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Accounts Manager",
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
